@@ -21,7 +21,7 @@ $select = ($query != '') ? mysqli_query($connect, "SELECT * FROM users WHERE id 
     <!-- <link rel="stylesheet" href="contact.css"> -->
     <link rel="stylesheet" href="engine/asset/css/simpan.css">
     <link rel="icon" href="https://img.icons8.com/fluent/48/000000/source-code.png">
-    <title>Data</title>
+    <title>Company Profile</title>
 
     <style>
         * {
@@ -95,32 +95,105 @@ $select = ($query != '') ? mysqli_query($connect, "SELECT * FROM users WHERE id 
         }
 
         table {
-        border-collapse: collapse;
-        width: 100%;
-    }
+            border-collapse: collapse;
+            width: 100%;
+        }
 
-    th,
-    td {
-        text-align: center;
-        padding: 8px;
-    }
+        th,
+        td {
+            text-align: center;
+            padding: 8px;
+        }
 
-    th {
-        background-color: orange;
-        color: white;
-    }
+        th {
+            background-color: orange;
+            color: white;
+        }
 
-    tr:nth-child(even) {
-        background-color: #f8f8f8;
-    }
+        tr:nth-child(even) {
+            background-color: #f8f8f8;
+        }
 
-    tr:nth-child(odd) {
-        background-color: #fff;
-    }
+        tr:nth-child(odd) {
+            background-color: #fff;
+        }
 
-    tr:hover {
-        background-color: #FFA07A;
-    }
+        tr:hover {
+            background-color: #FFA07A;
+        }
+
+        @keyframes slide-animation {
+            0% {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 1;
+            }
+
+            40% {
+                opacity: 1;
+            }
+
+            50% {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+
+            100% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        .animated-heading {
+            font-weight: bold;
+            font-size: 24px;
+            text-transform: uppercase;
+            text-align: center;
+            animation: slide-animation 10s linear infinite;
+        }
+
+        @keyframes color-animation {
+            0% {
+                color: red;
+                animation-delay: 0s;
+            }
+
+            25% {
+                color: blue;
+                animation-delay: 2s;
+            }
+
+            50% {
+                color: green;
+                animation-delay: 4s;
+            }
+
+            75% {
+                color: yellow;
+                animation-delay: 6s;
+            }
+
+            100% {
+                color: purple;
+                animation-delay: 8s;
+            }
+        }
+
+        .colorful-text {
+            animation: color-animation 10s linear infinite;
+        }
+
+        .animated-heading {
+            font-weight: bold;
+            font-size: 24px;
+            text-transform: uppercase;
+            text-align: center;
+            color: #000;
+            animation: slide-animation 15s ease-in-out infinite;
+        }
     </style>
 
 </head>
@@ -158,8 +231,10 @@ $select = ($query != '') ? mysqli_query($connect, "SELECT * FROM users WHERE id 
                     <div class="col">
                         <div style="display: flex;">
                             <div style="width: 50%;">
-                                <h3 class="mt-3">List Data</h3>
+                                <h3 class="mt-3 animated-heading colorful-text">INI WEB UKL PUNYA TEGAR</h3>
                             </div>
+
+
                             <div style="width: 50%; text-align: right;">
                                 <button type="button" class="btn text-light bg-blue" data-bs-toggle="modal"
                                     data-bs-target="#addContact"
