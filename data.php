@@ -20,7 +20,7 @@ $select = ($query != '') ? mysqli_query($connect, "SELECT * FROM users WHERE id 
         integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
     <!-- <link rel="stylesheet" href="contact.css"> -->
     <link rel="stylesheet" href="engine/asset/css/simpan.css">
-
+    <link rel="icon" href="https://img.icons8.com/fluent/48/000000/source-code.png">
     <title>Data</title>
 
     <style>
