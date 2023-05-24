@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>configurasi Bind9</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="https://img.icons8.com/fluent/48/000000/source-code.png">
+
+</head>
+<body>
+        <div id="content">
+          <div id="sidebar" >
+            <div class="sep"></div>
+            <div class="sidebox">
+              <h1>Sidebar Menu</h1>
+              <ul class="sidemenu">
+                <li><a href="#main">Bind9 </a></li>
+                <li><a href="#install">installasi bind9</a></li>
+                <li><a href="#conf">configurasi DNS</a></li>
+                <li><a href="#firefox">cek firefox</a> </li>
+                <li><a href="#"> </a> </li>
+              </ul>
+            </div>
+            <div class="sidebox">
+              <h1>Project lainya</h1>
+              <ul class="sidemenu">
+                <li><a href="../website-kalkulator/index.html">Calculator website</a></li>
+                <li><a href="../blog debian 1/index.html">Linux Debian 11 'Bullseye'</a></li>
+                <li><a href="../blog debian 2/index.html">Virtual LAN Trunking </a></li>
+                <li><a href="../blog debian 3/index.html">Remote Server</a></li>
+                <li><a href="../blog debian 4/index.html">Virtual Host</a></li>
+              </ul>
+            </div>
+            <div class="sidebox">
+              <h1>Kata Kata Hari Ini</h1>
+              <p>&quot;“Risk more than other think is safe. Care more than other think is wise. Dream more than other think is practical. 
+                Expect more than other think is possible”&quot;</p>
+              <p class="align-right">- Om Tegar</p>
+            </div>
+          </div>
+          <div id="main">
+            <div class="box"> <a name="opening"></a>
+              <h1><a href="index.html">debian 11  <span class="white">configurasi bind9</span></a></h1>
+              <p class="post-by">Posted by <a href="../../index.html">Tegar Dito</a></p>
+              <p> <a href="../../profile.html"><strong> Om Tegar- </strong> </a> 
+                BIND9 atau Berkeley Internet Name Domain Versi 9 adalah salah satu software yang biasa digunakan untuk membuat, membangun dan mengatur sebuah DNS (Domain Name Server) pada sistem operasi Linux.
+                Domain Name System atau yang biasa disingkat dengan DNS adalah sebuah sistem yang berfungsi menterjemahkan alamat IP ke nama domain atau sebaliknya, dari nama domain ke alamat IP. Jadi, host 
+                komputer mengirimkan queries berupa nama komputer dan domain name server yang kemudian dipetakan ke dalam alamat IP oleh DNS .
+              </p>
+              <p class="post-footer align-right"> <a href="../../project.html" class="readmore">Read more</a> 
+                <a href="../../contact.html" class="comments">Comments </a> <span class="date">April, 18 2022</span> </p>
+            </div>
+
+            <div class="box"> <a name="install"></a>
+              <h1><a href="index.html">debian 11  <span class="white">Configurasi DNS</span></a></h1>
+              <p class="post-by">Posted by <a href="../../index.html">Tegar Dito</a></p>
+              <p> <a href="../../profile.html"><strong> Om Tegar- </strong> </a> 
+                Linux Debian 11 Configurasi DNS ( Domain Name Server )
+              </p>
+              <p>
+                sebelum masuk ke tutorial konfigurasi DNs debian 11, pastikan anda sudah
+                mengikuti langkah langkah sebelum nya atau <a href="../../project.html">click disini</a>
+                jika di rasa kalian sudah mengikuti tutorial dengan baik. silahkan di coba untuk melakukan 
+                Konfigurasi dns. pertama silahkan masuk ke directory bind di debian 11 kalian dengan cara:
+              </p>
+              <p>bagi yang belum Download bind silahkan download bind 9 dengan mengetikkan</p>
+              <p><code>systemctl restart networking</code></p>
+              <p><code>apt-get install bind9</code>sebelum melakukan installasi silahkan aktifkan CDROM terlebih dahulu dan jangan lupa juga untuk mengganti network dari bridge adapter menjadi NAT. jika sudah melakukan installasi silahkan kembalikan seperti semula, dan restart networking</p>
+              <p>gunakan setelah mengembalikan networking menjadi bridge adapter.<code>systemctl restart networking</code>silahkan cek ip kalian terlebih dahulu sebelum masuk ke langkah selanjutnya</p>
+              <p><code>systemctl status bind9</code> pastikan bind sudah aktif dan click "ctrl + c" untuk keluar, selanjutnya kita akan cek ip kita</p>
+              <p><code>ip -c a</code>okehh kita kembali ke tutorial , pertama kalian masuk ke directory bind yaaa...</p>
+              <p><code>cd</code></p>
+              <p><code>cd /etc/bind</code></p>
+              <p><code>ls</code>hal ini di gunakan unuk melihat isi file directory tersebut</p>
+              <img src="images/isi bind.png" alt="" class="float-left" style="width: -webkit-fill-available;">
+              <p>Normal nya db.tegarT533 dan juga db.33 masih belum tersedia, jadi kita akan membuat 2 file tersebut dengan mengkopikan db.local dan juga db.127</p>
+            </div>
+
+            <div class="box"> <a name="conf"></a>
+              <h2>konfigurasi bind9</h2>
+              <P>kita mengkopi kan folder tersebut dengan cara</P>
+              <p><code>cp db.local db.tegarT533</code></p>
+              <img src="images/copy db local.png" alt="" class="float-left" style="width: -webkit-fill-available;">
+              <p><code>cd db.127 <a>db.33</a> <-- berikut adalah ip kita dari oktet ke 4</code>bagi yang lupa dengan ip nya bisa di cek lagi di tutorial Virtual lan Trungking sebelumnya atau<a href="../blog debian 2/index.html">click disini</a></p>
+              <img src="images/copy db 127.png" alt="" class="float-left" style="width: -webkit-fill-available;">
+              <p>kita akan konfigurasi named.conf.default-zones terlebih dahulu ya.</p>
+              <p><code>nano named.conf.default-zones</code></p>
+              <img src="images/named conf.png" alt="" class="float-left" style="width: -webkit-fill-available;">
+              <P>perhatikan pada bagian zone "noname.com" <-- noname.com merupakan domain kalian yang bisa di lihat di <a href="../blog debian 2/index.html#ip Conf" target="_blank">blog sebelum nya</a>
+              perhatikan juga pada bagian file "/etc/bind/<a>db.tegarT533</a>" <-- berikut adalah nama file yang kita buat tadi. selanjutnya perhatikan pada zone "<a>1.168.192.</a>" <-- berikut adalah ip kita yag penulisnya di balik dari oktet ke 3,2,1
+              lalu perhatikan lagi arah file directory tersebut di file "etc/bind/<a>db.33</a>" <-- berikut adalah nama ip yang kita buat tadi, selanjutnya kita akan configurasi 2 file yang kita buat tadi.
+              </P>
+              <p><code>nano db.tegarT533</code>
+              perhatikan perubahan yang akan di lakukan , serta perhatikan tanda titik , domain , dan juga ip addres kalian.
+              </p>
+              <img src="images/db.tegarT533.png" alt="" class="float-left" style="width: -webkit-fill-available;">
+              <img src="images/db.tegarT533 1.png" alt="" class="float-left" style="width: -webkit-fill-available;">
+              <p>disini silahkan lakukan perubahan seperti gambar di atas, jika sudah silahkan simpan dan keluar dengan menggunakan " ctrl + x " dan " Y + Enter " lalu kita masuk ke db.33</p>
+              <img src="images/db.33 1.png" alt="" class="float-left" style="width: -webkit-fill-available;">
+              <img src="images/db.33.png" alt="" class="float-left" style="width: -webkit-fill-available;">
+              <P>perhatikan pada bagian ip tersebut, jika di perhatikan ip yang tertulis adalah ip yang di balik.
+                penulisan ipnya di mulai dari octate 4-3-2 dan menjadi : 33.1.168. selanjutnya kalian simpan dan keluar setelah itu kalian masuk pada -webkit-fill-available
+              </P>
+              <p><code>nano named.conf.options</code></p>
+              <img src="images/forwader.png" alt="" class="float-left" style="width: -webkit-fill-available;">
+              <p>disini pada bagian forwaders silahkan masukkan ip kalian dan juga silahkan hapus garis miring yang ada di belakang ip tesebut, contohnya bisa kalian lihat seperti gambar di atas</p>
+              <p><code>nano resolv.conf</code> disini kita akan membuat file baru dengan nama resolv.conf , dalam file kosong itu silahkan isikan data website kalian</p>
+              <img src="images/resolv.conf.png" alt="" class="float-left" style="width: -webkit-fill-available;">
+              <p>silahkan simpan dan keluar, setelah melakukan peubahan ,kalian di wajibkan untuk melakukan restart bind tersebut dengan mengetikkan <code>systemctl restart bind9</code></p>
+            </div>
+
+          <div class="box"><a name="firefox"></a>
+            <p>kita akan melihat status bind9 terlebih dahulu untuk melihat bind9 dengan keadaan masih running dengan mengetikkan
+              <code>systemctl status bind9</code>
+            </p>
+            <img src="images/status bind.png" alt="" class="float-left" style="width: -webkit-fill-available;">
+            <p>pastikan bind9 sudah aktif dan kita cek juga dengan mengetikkan 
+              <code>nslookup</code>
+              setelah itu masukkan nama domain kalian.
+            </p>
+            <img src="images/nslookup.png" alt="" class="float-left" style="width: -webkit-fill-available;">
+            <p>selanjutnya kita ping domain kita dengan mengetikkan
+              <code>ping noname.com</code>
+            </p>
+            <img src="images/ping noname.png" alt="" class="float-left" style="width: -webkit-fill-available;">
+            <p>selanjutnyakita beralih ke software firefox kita , jika sebelumnya kita menggunakkan ip untuk mengaksesnya, sekarang kita hanya memasukkan nam domain kita</p>
+            <img src="images/firefox domain.png" alt="" class="float-left" style="width: -webkit-fill-available;">
+            <p>jika file html kalian sudah muncul , selamat kalian sudah berhasil melakukan konfigurasi apache2 dan juga bind9.</p>
+          </div>
+            
+            <div class="box">
+              <p>
+                Terimakasih untuk yang sudah mengikuti blog ini sampai akhir.
+                jika kalian mengalami kendala bisa di baca ulang di blog blog sebelumnya atau <a href="../../index.html#projects">click disin</a>
+                silahkan tinggalkan komentar anda jika mau ngobrol ngobrol bersama Om <a href="../../index.html#contact">contact</a>  dan jika
+                mengalami kesulitan silahkan hubungi om ya.
+                <p class="post-footer align-right"> <a href="../../index.html" class="readmore">Read more</a> 
+                  <a href="../../index.html#contact" class="comments">Comments </a> <span class="date">April, 18 2022</span> </p>
+              </p>
+            </div>
+            <br />
+          </div>
+</body>
+</html>
