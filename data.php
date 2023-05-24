@@ -95,24 +95,32 @@ $select = ($query != '') ? mysqli_query($connect, "SELECT * FROM users WHERE id 
         }
 
         table {
-            border-collapse: collapse;
-            width: 100%;
-        }
+        border-collapse: collapse;
+        width: 100%;
+    }
 
-        th,
-        td {
-            text-align: center;
-            padding: 8px;
-        }
+    th,
+    td {
+        text-align: center;
+        padding: 8px;
+    }
 
-        th {
-            background-color: #9400D3;
-            color: white;
-        }
+    th {
+        background-color: orange;
+        color: white;
+    }
 
-        tr:nth-child(even) {
-            background-color: #f2f2f2;
-        }
+    tr:nth-child(even) {
+        background-color: #f8f8f8;
+    }
+
+    tr:nth-child(odd) {
+        background-color: #fff;
+    }
+
+    tr:hover {
+        background-color: #FFA07A;
+    }
     </style>
 
 </head>
@@ -155,7 +163,7 @@ $select = ($query != '') ? mysqli_query($connect, "SELECT * FROM users WHERE id 
                             <div style="width: 50%; text-align: right;">
                                 <button type="button" class="btn text-light bg-blue" data-bs-toggle="modal"
                                     data-bs-target="#addContact"
-                                    style="background-color: #9400D3; color: #fff; padding: 10px; text-decoration: none; font-size: 12px; border: 0px; margin-top: 20px;">+Add
+                                    style="background-color: orange; color: #fff; padding: 10px; text-decoration: none; font-size: 12px; border: 0px; margin-top: 20px;">+Add
                                     Data</button>
                             </div>
                         </div>
